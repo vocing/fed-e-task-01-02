@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" style="width:100%; height: 100%; overflow: hidden;">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  </head>
+  <body>
+    <button id="d">1111</button>
+    <script>
+
+      let p = document.createDocumentFragment()
+      p.appendChild(document.createElement("div"))
+      p.appendChild(document.createElement("div"))
+      p.appendChild(document.createElement("div"))
+      p.appendChild(document.createElement("div"))
+      console.log(p)
+      
+      let d = document.getElementById("d")
+      let q = d.cloneNode()
+      console.log(d)
+      console.log(q)
+
+
+//       document.getElementById("d").onclick = () => {
+//         // Jsperf测试
+// // 1000000 数据情况下 for var + push操作 比map快
+// let list = new Array(1000000).fill(1)
+// let b = []
+// let len = list.length
+// for(let i = 0; i < len; i++) {
+//   b.push(i +1 )
+// }
+// /*
+//   56.36
+//   ±1.33%
+//   fastest
+// */
+// // 
+// b = list.map(item => item + 1)
+// /*
+//   527,682
+//   ±4.57%
+//   26% slower
+// */
+
+// // 100 条数据情况下 for var + push比map慢
+// let list = new Array(100).fill(1)
+// let b = []
+// // 1000000 数据情况下 for var + push操作 比map快
+// let len = list.length
+// for(let i = 0; i < len; i++) {
+//   b.push(i +1 )
+// }
+// /*
+//   56.36
+//   ±1.33%
+//   fastest
+// */
+// // 
+// b = list.map(item => item + 1)
+//         /*688,775
+//           ±0.50%
+//           fastest*/
+//         console.log(list)
+//         a = list.map(() => document.createElement("div"))
+//       }
+    </script>
+  </body>
+</html>
