@@ -1,17 +1,20 @@
 一、简答题
 
 1、描述引用计数的工作原理和优缺点
+
 答：监听所有空间的引用数量，当引用数量发生变化时发生修改，当引用数量为0时，回收该空间
     优点：及时回收，并优化程序效率
     缺点：监听耗费大量资源，而且可能存在闭包内空间的循环引用而无法回收
 
 2、描述标记整理算法的工作流程
+
 答：触发垃圾回收时，
     1、遍历所有可达对象，标记处理活动中的对象；
     2、整理标记对象的空间、没有标记的对象空间分别连续；
     3、回收没有标记的对象空间，并清除所有标记便于下次GC。
 
 3、描述V8中新生代存储区垃圾回收的流程
+
 答：新生代存储区空间会分为两个等大小的空间，一个为From代表正在活动中的空间，一个为To代表备用空间
     1、先对From空间进行标记整理，标记并整理出活动对象；
     2、空间复制，将活动对象复制到To空间；
@@ -19,6 +22,7 @@
     4、可能会出现晋升，满足的条件有两个：a、一轮GC后还存活的对象；b、To空间转化活动空间时，空间使用率高于25%(如果空间使用率过高，会导致后续准备新生成的对象或已存在对象新增属性无法申请空间)
 
 4、描述增量标记算法在何时使用及工作原理
+
 答：使用：增量标记算法，在老年代存储区达到阈值时触发
     原理：标记与程序交替执行，使得程序不会将阻塞时间全挤在一块儿，用户体验感更好
 
@@ -26,6 +30,7 @@
 const fp = require("lodash/fp")
 数据
 horsepower 马力, dollar_value 价格，in_stock库存
+
 const cars = [
   { name: "Ferrari FF", horsepower: 660, dollar_value: 700000, in_stock: true},
   { name: "Spyker C12 Zagato", horsepower: 650, dollar_value: 648000, in_stock: false},
@@ -49,7 +54,8 @@ let isLastInStock = fp.flowRight(fn => fp.prop("in_stock", fn), fp.last)
 
 练习2：
 使用fp.flowRight()、 fp.prop() 和 fp.first()获取第一个car的name
-let getAttribute = function (attr) {
+
+答：let getAttribute = function (attr) {
   return fp.flowRight(fn => fp.prop(attr, fn), fp.first)
 }
 console.log(getAttribute("name")(cars))
@@ -75,7 +81,8 @@ let averageDollarValue = fp.flowRight(_average, fp.map(car => car.dollar_value))
 使用flowRight写一个sanitizeNames()函数，
 返回一个下划线连接的小写字符串，把数组中的name转换为这种形式：
 例如：sanitizeNames(["Hello World"]) => ["hello_world"]
-let sanitizeNames = fp.map(fp.flowRight(fp.toLower, fp.join("_"),fp.split(" ")))
+
+答：let sanitizeNames = fp.map(fp.flowRight(fp.toLower, fp.join("_"),fp.split(" ")))
 
 代码题2
 基于下面提供的代码，完成后续的四个练习
