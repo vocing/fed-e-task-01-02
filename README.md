@@ -105,7 +105,7 @@ class Maybe {
   map(fn) {
     return this.isNothing() ? this : Container.of(fn(this._value))
   }
-}
+} 
   
 module.exports = {
   Maybe,
