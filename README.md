@@ -49,13 +49,12 @@ let isLastInStock = function (cars) {
   return fp.prop("in_stock", last_car)
 }
 
-答：
 let isLastInStock = fp.flowRight(fn => fp.prop("in_stock", fn), fp.last)
 
 练习2：
 使用fp.flowRight()、 fp.prop() 和 fp.first()获取第一个car的name
 
-答：let getAttribute = function (attr) {
+let getAttribute = function (attr) {
   return fp.flowRight(fn => fp.prop(attr, fn), fp.first)
 }
 console.log(getAttribute("name")(cars))
@@ -74,7 +73,6 @@ let averageDollarValue = function (cars) {
 }
 
 
-答：
 let averageDollarValue = fp.flowRight(_average, fp.map(car => car.dollar_value))
 
 练习4：
@@ -82,7 +80,7 @@ let averageDollarValue = fp.flowRight(_average, fp.map(car => car.dollar_value))
 返回一个下划线连接的小写字符串，把数组中的name转换为这种形式：
 例如：sanitizeNames(["Hello World"]) => ["hello_world"]
 
-答：let sanitizeNames = fp.map(fp.flowRight(fp.toLower, fp.join("_"),fp.split(" ")))
+let sanitizeNames = fp.map(fp.flowRight(fp.toLower, fp.join("_"),fp.split(" ")))
 
 代码题2
 基于下面提供的代码，完成后续的四个练习
